@@ -3,9 +3,19 @@ resource "aws_instance" "myec2_1" { /*Fetch value from a list*/
   instance_type = var.list[0]
 }
 
+variable "payements-system-types" {
+  type = list
+  default = ["reception", "backend", "finance-dep"]
+}
+
 resource "aws_instance" "myec2_2" { /*Fetch value from a map*/
   ami = "ami-123"
   instance_type = var.types["ap-south-1"]
+  count = 3
+
+  tags = {
+    name = "payments-system-${var.payements-system-types[count.index]}"
+  }
 }
 
 variable "list" {
