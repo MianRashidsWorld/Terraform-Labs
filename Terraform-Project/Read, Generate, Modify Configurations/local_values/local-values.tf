@@ -1,9 +1,9 @@
-variable "tags" {
+/*vterraariable "tags" {
   type = map
   default = {
     Team = "security-team"
   }
-}
+}*/
 
 locals {
   default = {
